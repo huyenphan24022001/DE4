@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="856b20c272954a0a897798885a037436" Name="Diagram1">
+        <EntityTypeShape EntityType="DE4Model.LichSu" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="DE4Model.Token" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="DE4Model.TuyenTruyen" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="DE4Model.User" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="DE4Model.FK__LichSu__IDTT__5CD6CB2B" />
+        <AssociationConnector Association="DE4Model.FK__Token__Users_ID__71D1E811" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

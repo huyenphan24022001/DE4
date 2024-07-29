@@ -1,0 +1,12 @@
+Viết ứng dụng web quản lý thông tin tuyên truyền trên địa bàn, cài đặt theo mô hình MVC thực hiện các chức năng sau:
+-	Quản lý Nội dung tuyên truyền (thêm, cập nhật, xóa, xem danh sách). (20đ)
+-	Duyệt nội dung. (10đ)
+-	Quản lý lịch sử nội dung tuyên truyền. (15đ)
+-	Lập lịch tự động. (5đ)
+Thông tin cơ bản nội dung tuyên truyền gồm:
+-	Tiêu đề
+-	Mô tả
+-	Ngày bắt đầu tuyên truyền
+-	Ngày hết hạn
+-	Tên đơn vị sử dụng
+-	Lịch sử tuyên truyền

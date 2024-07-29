@@ -1,0 +1,45 @@
+﻿@model DE4.Models.TuyenTruyen
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-3">
+    <h2>Chi tiết</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Mã</th>
+                <th>Tiêu đề</th>
+                <th>Mô tả</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Tên đơn vị</th>
+                <th>Lịch sử</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.ID</td>
+                <td>@Model.TieuDe</td>
+                <td>@Model.MoTa</td>
+                <td>@Model.NgayBD</td>
+                <td>@Model.NgayKT</td>
+                <td>@Model.TenDonVi</td>
+
+                <td>@Model.LichSuTuyenTruyen</td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

@@ -1,0 +1,85 @@
+﻿@model DE4.Models.TuyenTruyen
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Thêm mới thông tin tuyên truyền</h2>
+
+<div class="w3agile-validation w3ls-validation">
+    <div class="panel panel-widget agile-validation">
+        <div class="validation-grids widget-shadow" data-example-id="basic-forms">
+            <div class="input-info">
+                <h3>Thông tin tin tức :</h3>
+            </div>
+            <div class="form-body form-body-info">
+                <form data-toggle="validator" novalidate="true" action="#" method="post" enctype="multipart/form-data">
+                    <div class="form-group ">
+                        <input type="text" class="form-control" id="TieuDe" placeholder="Tiêu đề" max="255" name="TieuDe" required="">
+                    </div>
+
+                    <div class="form-group">
+
+                        <textarea placeholder="Mô tả" class="form-control" rows="10" id="MoTa" name="MoTa"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="ThgianBD" class="col-sm-2 control-label">Thời gian bắt đầu</label>
+                        <input type="date" class="form-control" id="NgayBD" name="NgayBD" required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ThgianKT" class="col-sm-2 control-label">Thời gian kết thúc</label>
+                        <input type="date" class="form-control" id="NgayKT" name="NgayKT" required="">
+                    </div>
+
+                    <div class="form-group ">
+                        <input type="text" class="form-control" id="TenDonVi" placeholder="Tên đơn vị" max="255" name="TenDonVi" required="">
+                    </div>
+
+                    <br />
+                    <div class="bottom">
+
+                        <div class="form-group">
+                            <button type="submit" onclick="return checkday()" class="btn btn-primary ">Thêm</button>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+    function checkday() {
+
+     
+        var Phone = $("#MoTa").val();
+        
+        if (Phone.length > 255) {
+            var text = "MoTaNgan phải có ít hơn 255 ký tự";
+            window.location.href = "https://localhost:44361/Home/Error?MaError=" + text
+            return false;
+        }
+
+
+
+        return true;
+    }
+
+
+</script>
+

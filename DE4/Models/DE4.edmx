@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DE4Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LichSu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDTT" Type="int" />
+          <Property Name="NgayChinhSua" Type="datetime" />
+          <Property Name="ChinhSuaBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="NoiDungChinhSua" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Users_ID" Type="int" />
+          <Property Name="access_token" Type="nvarchar" MaxLength="255" />
+          <Property Name="refresh_token" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TuyenTruyen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
+          <Property Name="NgayBD" Type="datetime" />
+          <Property Name="NgayKT" Type="datetime" />
+          <Property Name="TenDonVi" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DaDuyet" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Pass" Type="nvarchar" MaxLength="255" />
+          <Property Name="Role" Type="int" />
+        </EntityType>
+        <Association Name="FK__LichSu__IDTT__5CD6CB2B">
+          <End Role="TuyenTruyen" Type="Self.TuyenTruyen" Multiplicity="0..1" />
+          <End Role="LichSu" Type="Self.LichSu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuyenTruyen">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LichSu">
+              <PropertyRef Name="IDTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Token__Users_ID__71D1E811">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Token" Type="Self.Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="Users_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DE4ModelStoreContainer">
+          <EntitySet Name="LichSu" EntityType="Self.LichSu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TuyenTruyen" EntityType="Self.TuyenTruyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__LichSu__IDTT__5CD6CB2B" Association="Self.FK__LichSu__IDTT__5CD6CB2B">
+            <End Role="TuyenTruyen" EntitySet="TuyenTruyen" />
+            <End Role="LichSu" EntitySet="LichSu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Token__Users_ID__71D1E811" Association="Self.FK__Token__Users_ID__71D1E811">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Token" EntitySet="Token" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DE4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DE4Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LichSus" EntityType="DE4Model.LichSu" />
+          <EntitySet Name="Tokens" EntityType="DE4Model.Token" />
+          <EntitySet Name="TuyenTruyens" EntityType="DE4Model.TuyenTruyen" />
+          <EntitySet Name="Users" EntityType="DE4Model.User" />
+          <AssociationSet Name="FK__LichSu__IDTT__5CD6CB2B" Association="DE4Model.FK__LichSu__IDTT__5CD6CB2B">
+            <End Role="TuyenTruyen" EntitySet="TuyenTruyens" />
+            <End Role="LichSu" EntitySet="LichSus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Token__Users_ID__71D1E811" Association="DE4Model.FK__Token__Users_ID__71D1E811">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Token" EntitySet="Tokens" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="LichSu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDTT" Type="Int32" />
+          <Property Name="NgayChinhSua" Type="DateTime" Precision="3" />
+          <Property Name="ChinhSuaBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDungChinhSua" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TuyenTruyen" Relationship="DE4Model.FK__LichSu__IDTT__5CD6CB2B" FromRole="LichSu" ToRole="TuyenTruyen" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Users_ID" Type="Int32" />
+          <Property Name="access_token" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="refresh_token" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="DE4Model.FK__Token__Users_ID__71D1E811" FromRole="Token" ToRole="User" />
+        </EntityType>
+        <EntityType Name="TuyenTruyen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TieuDe" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBD" Type="DateTime" Precision="3" />
+          <Property Name="NgayKT" Type="DateTime" Precision="3" />
+          <Property Name="TenDonVi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DaDuyet" Type="Boolean" />
+          <NavigationProperty Name="LichSus" Relationship="DE4Model.FK__LichSu__IDTT__5CD6CB2B" FromRole="TuyenTruyen" ToRole="LichSu" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Int32" />
+          <NavigationProperty Name="Tokens" Relationship="DE4Model.FK__Token__Users_ID__71D1E811" FromRole="User" ToRole="Token" />
+        </EntityType>
+        <Association Name="FK__LichSu__IDTT__5CD6CB2B">
+          <End Type="DE4Model.TuyenTruyen" Role="TuyenTruyen" Multiplicity="0..1" />
+          <End Type="DE4Model.LichSu" Role="LichSu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuyenTruyen">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LichSu">
+              <PropertyRef Name="IDTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Token__Users_ID__71D1E811">
+          <End Type="DE4Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="DE4Model.Token" Role="Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="Users_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DE4ModelStoreContainer" CdmEntityContainer="DE4Entities">
+          <EntitySetMapping Name="LichSus">
+            <EntityTypeMapping TypeName="DE4Model.LichSu">
+              <MappingFragment StoreEntitySet="LichSu">
+                <ScalarProperty Name="NoiDungChinhSua" ColumnName="NoiDungChinhSua" />
+                <ScalarProperty Name="ChinhSuaBy" ColumnName="ChinhSuaBy" />
+                <ScalarProperty Name="NgayChinhSua" ColumnName="NgayChinhSua" />
+                <ScalarProperty Name="IDTT" ColumnName="IDTT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tokens">
+            <EntityTypeMapping TypeName="DE4Model.Token">
+              <MappingFragment StoreEntitySet="Token">
+                <ScalarProperty Name="refresh_token" ColumnName="refresh_token" />
+                <ScalarProperty Name="access_token" ColumnName="access_token" />
+                <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TuyenTruyens">
+            <EntityTypeMapping TypeName="DE4Model.TuyenTruyen">
+              <MappingFragment StoreEntitySet="TuyenTruyen">
+                <ScalarProperty Name="DaDuyet" ColumnName="DaDuyet" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="TenDonVi" ColumnName="TenDonVi" />
+                <ScalarProperty Name="NgayKT" ColumnName="NgayKT" />
+                <ScalarProperty Name="NgayBD" ColumnName="NgayBD" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DE4Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
